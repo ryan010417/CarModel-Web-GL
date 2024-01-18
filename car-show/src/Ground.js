@@ -6,8 +6,8 @@ import { LinearEncoding, RepeatWrapping, TextureLoader } from "three";
 export function Ground() {
   // thanks to https://polyhaven.com/a/rough_plasterbrick_05 !
   const [roughness, normal] = useLoader(TextureLoader, [
-    process.env.PUBLIC_URL + "textures/terrain-roughness.jpg",
-    process.env.PUBLIC_URL + "textures/terrain-normal.jpg",
+    process.env.PUBLIC_URL + "textures/asphalt_04_rough_4k.jpg",
+    process.env.PUBLIC_URL + "textures/asphalt_04_nor_gl_4k.jpg",
   ]);
 
   useEffect(() => {
@@ -29,16 +29,16 @@ export function Ground() {
 
   return (
     <mesh rotation-x={-Math.PI * 0.5} castShadow receiveShadow>
-      <planeGeometry args={[30, 30]} />
+      <planeGeometry args={[50, 50]} />
       <MeshReflectorMaterial
         envMapIntensity={0}
         normalMap={normal}
         normalScale={[0.15, 0.15]}
         roughnessMap={roughness}
         dithering={true}
-        color={[0.015, 0.015, 0.015]}
-        roughness={0.7}
-        blur={[1000, 400]} // Blur ground reflections (width, heigt), 0 skips blur
+        color={[0.7, 0.5, 0.6]}
+        roughness={1}
+        blur={[1000, 1000]} // Blur ground reflections (width, heigt), 0 skips blur
         mixBlur={30} // How much blur mixes with surface roughness (default = 1)
         mixStrength={80} // Strength of the reflections
         mixContrast={1} // Contrast of the reflections
